@@ -8,6 +8,12 @@ public class LinkedList {
     private int numberOfAppointments;
 
 
+    //Constructor
+    public LinkedList(){
+    this.head = null;
+    this.tail = null;
+    this.numberOfAppointments = 0;
+    }
 
 
 
