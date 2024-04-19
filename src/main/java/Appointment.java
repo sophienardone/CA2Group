@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Appointment {
 
@@ -85,5 +86,49 @@ public class Appointment {
 
     public void setDocFullName(String docFullName) {
         this.docFullName = docFullName;
+    }
+
+    //equals method
+
+    public boolean equals(Object o) {
+        //checks that the current object is the same of the object being compared
+        if (this == o) return true;
+        //checks if compared object is an instance of 'Appointment' class
+        if (!(o instanceof Appointment)) return false;
+        //casts Object 'o' to an Appointment object
+        Appointment app = (Appointment) o;
+        //checks if triageLevel of current Appointment object is equal to triageLevel of Appointment object being compared to
+        return triageLevel == app.triageLevel &&
+                firstName.equals(app.firstName) &&
+                lastName.equals(app.lastName) &&
+                dob.equals(app.dob) &&
+                issue.equals(app.issue) &&
+                date.equals(app.date) &&
+                docFullName.equals(app.docFullName);
+    }
+
+    //hashcode method
+
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, lastName, dob, issue, date, triageLevel, docFullName);
+    }
+
+
+    //toString method
+
+
+    @Override
+    public String toString() {
+        return "Appointment{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", dob=" + dob +
+                ", issue='" + issue + '\'' +
+                ", date=" + date +
+                ", triageLevel=" + triageLevel +
+                ", docFullName='" + docFullName + '\'' +
+                '}';
     }
 }
