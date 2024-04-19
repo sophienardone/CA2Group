@@ -29,6 +29,17 @@ public class LinkedList {
     public int size(){return numberOfAppointments;}
 
 
+    public boolean isEmpty(){
+        if (numberOfAppointments == 0) return true;
+        else return false;
+    }
+
+    public boolean isFull(){ return numberOfAppointments == maxSize;}
+
+
+
+
+
 
 
 
