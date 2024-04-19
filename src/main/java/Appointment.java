@@ -1,7 +1,7 @@
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Appointment {
+public class Appointment implements Comparable<Appointment> {
 
     //Fields
     private String firstName;
@@ -130,5 +130,15 @@ public class Appointment {
                 ", triageLevel=" + triageLevel +
                 ", docFullName='" + docFullName + '\'' +
                 '}';
+    }
+
+
+    //compareTo method
+    public int compareTo(Appointment o) {
+        if (this.triageLevel != o.triageLevel) {
+            return Integer.compare(this.triageLevel, o.triageLevel);
+        } else {
+            return this.date.compareTo(o.date);
+        }
     }
 }
