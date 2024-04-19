@@ -7,13 +7,27 @@ public class LinkedList {
 
     private int numberOfAppointments;
 
+    private final int maxSize;
+
 
     //Constructor
     public LinkedList(){
     this.head = null;
     this.tail = null;
     this.numberOfAppointments = 0;
+    this.maxSize = 10;
     }
+
+    //Constructor that accepts a maximum size
+    public LinkedList(int maxSize) {
+        this.head = null;
+        this.tail = null;
+        this.numberOfAppointments = 0;
+        this.maxSize = maxSize;
+    }
+
+    public int size(){return numberOfAppointments;}
+
 
 
 
