@@ -7,7 +7,7 @@ public class LinkedList {
 
     private int numberOfAppointments;
 
-    private final int maxSize;
+    protected final int maxSize;
 
 
     //Constructor
