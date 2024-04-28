@@ -19,6 +19,13 @@ public class BoundedPriorityQueue extends LinkedList {
         }
     }
 
+    public void failFastAdd(Appointment appointment) {
+        if (this.size() >= maxSize || !appointment.getDocFullName().equalsIgnoreCase(doctor)) {
+            throw new IllegalStateException("Appointment cannot be added due to size limit or doctor mismatch.");
+        }
+        super.add(appointment);
+    }
+
 
 
 
