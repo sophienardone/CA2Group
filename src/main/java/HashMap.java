@@ -74,6 +74,29 @@ public class HashMap {
         }
         return null;
     }
+    public Patient remove(String key) {
+        if (key == null) {
+            throw new IllegalArgumentException("The key provided is null");
+        }
+        if (numElements == 0) {
+            return null;
+        }
+
+        int slot = hashFunction(key);
+        if (data[slot] == null) {
+            return null;
+        }
+
+        for (Entry e : data[slot]) {
+            if (e.key.equals(key)) {
+                Patient valueToBeDeleted = e.value;
+                data[slot].remove(e);
+                numElements--;
+                return valueToBeDeleted;
+            }
+        }
+        return null;
+    }
 
     private static class Entry{
         protected final String key;
