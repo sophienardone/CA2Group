@@ -40,6 +40,33 @@ public class LinkedListTests {
         assertEquals(1, instance.size());
     }
 
+    @Test
+    public void testRemove() {
+        LinkedList instance = new LinkedList();
+        Appointment app1 = new Appointment("John", "Smith", LocalDate.of(2000, 5, 11), "Checkup", LocalDate.now(), 4, "Dr. Reilly");
+        instance.add(app1);
+        instance.remove(app1);
+        assertEquals(0, instance.size());
+    }
+
+
+    @Test
+    public void testGet_ValidInput() {
+        LinkedList instance = new LinkedList();
+        Appointment appointment1 = new Appointment("Amena", "Zahidi", LocalDate.of(2001, 13, 7), "Blood pressure", LocalDate.now(), 5, "Dr. Brady");
+        Appointment appointment2 = new Appointment("Sean", "McGuinness", LocalDate.of(1998, 9, 2), "Checkup", LocalDate.now(), 6, "Dr. Brady");
+        Appointment appointment3 = new Appointment("Josh", "Louet", LocalDate.of(2001, 23, 4), "Checkup", LocalDate.now(), 7, "Dr. Curtain");
+
+        instance.add(appointment1);
+        instance.add(appointment2);
+        instance.add(appointment3);
+
+        Appointment result = instance.get(1);
+        assertEquals(appointment2, result);
+    }
+
+
+
 
 
 
