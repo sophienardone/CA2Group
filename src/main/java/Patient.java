@@ -72,4 +72,15 @@ public class Patient {
     public int hashCode() {
         return Objects.hash(firstName, lastName, dateOfBirth);
     }
+
+    @Override
+    public String toString() {
+        return "Patient{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", dateJoined=" + dateJoined +
+                ", appointments=" + appointments +
+                '}';
+    }
 }
