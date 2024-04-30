@@ -154,6 +154,12 @@ public class App {
         if (!patientFound) {
             System.out.println("Patient not found in the practice.");
         }
-        System.out.println("Send help");
+    }
+    private void diaplayAllPatients(){
+        for (int i = 0; i < doctorsQueue.length; i++) {
+            for (int j = 0; j < doctorsQueue[i].size(); j++) {
+                System.out.println(doctorsQueue[i].get(j).toString());
+            }
+        }
     }
 }
