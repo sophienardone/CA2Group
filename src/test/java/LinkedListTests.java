@@ -66,6 +66,38 @@ public class LinkedListTests {
     }
 
 
+    @Test
+    public void testIndexOf_AppointmentInList() {
+        Appointment app = new Appointment("John", "Doe", LocalDate.of(2000, 1, 1), "Checkup", LocalDate.now(), 8, "Dr. Smith");
+        LinkedList instance = new LinkedList();
+        instance.add(new Appointment("Jane", "Smith", LocalDate.of(1995, 5, 10), "Dental", LocalDate.now(), 9, "Dr. Brown"));
+        instance.add(new Appointment("Alice", "Johnson", LocalDate.of(1988, 3, 15), "Surgery", LocalDate.now(), 10, "Dr. Johnson"));
+        instance.add(app);
+
+        int expResult = 2;
+        int result = instance.indexOf(app);
+        assertEquals(expResult, result);
+    }
+
+    @Test
+    public void testIsEmpty() {
+        LinkedList instance = new LinkedList();
+        boolean expResult = true;
+        boolean result = instance.isEmpty();
+        assertEquals(expResult, result);
+    }
+
+    @Test
+    public void testIsEmpty_PopulatedList() {
+        LinkedList instance = new LinkedList();
+        instance.add(new Appointment("Aisling", "Finnegan", LocalDate.of(1999, 17, 5), "Issue 0", LocalDate.now(), 11, "Dr. A"));
+        instance.add(new Appointment("Finian", "Moran", LocalDate.of(2000, 5, 10), "Issue 1", LocalDate.now(), 12, "Dr. B"));
+        instance.add(new Appointment("Eoghan", "O'Hora", LocalDate.of(2000, 17, 6), "Issue 2", LocalDate.now(), 13, "Dr. C"));
+
+        boolean expResult = false;
+        boolean result = instance.isEmpty();
+        assertEquals(expResult, result);
+    }
 
 
 
