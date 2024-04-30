@@ -1,9 +1,18 @@
 import java.util.LinkedList;
 
 public class HashMap {
-    private static final int DEFAULT_CAPACITY = 16;
-    private Entry[] data;
+    private LinkedList<Entry>[] data;
     private int numElements;
+
+    public HashMap() {
+        //50 is the default capacity
+        data = new LinkedList[50];
+        numElements = 0;
+    }
+
+    public HashMap(LinkedList<Entry>[] data) {
+        this.data = data;
+    }
 
     private static class Entry{
         private final String key;
