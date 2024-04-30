@@ -7,6 +7,9 @@ import static org.junit.Assert.assertEquals;
 public class LinkedListTests {
 
 
+    /**
+     * Test the size method of LinkedList with an empty list.
+     */
     @Test
     public void testSize_EmptyList() {
         LinkedList instance = new LinkedList();
@@ -16,6 +19,10 @@ public class LinkedListTests {
 
     }
 
+
+    /**
+     * Test the size method of LinkedList with a populated list.
+     */
 
     @Test
     public void testSize_PopulatedList() {
@@ -32,6 +39,11 @@ public class LinkedListTests {
         assertEquals(expResult, result);
     }
 
+
+    /**
+     * Test the add method of LinkedList.
+     */
+
     @Test
     public void testAdd() {
         LinkedList instance = new LinkedList();
@@ -40,6 +52,10 @@ public class LinkedListTests {
         assertEquals(1, instance.size());
     }
 
+
+    /**
+     * Test the remove method of LinkedList
+     */
     @Test
     public void testRemove() {
         LinkedList instance = new LinkedList();
@@ -49,6 +65,11 @@ public class LinkedListTests {
         assertEquals(0, instance.size());
     }
 
+
+
+    /**
+     * Test the get method of LinkedList with valid input.
+     */
 
     @Test
     public void testGet_ValidInput() {
@@ -66,6 +87,10 @@ public class LinkedListTests {
     }
 
 
+    /**
+     * Test the indexOf method of LinkedList with an appointment in the list.
+     */
+
     @Test
     public void testIndexOf_AppointmentInList() {
         Appointment app = new Appointment("John", "Doe", LocalDate.of(2000, 1, 1), "Checkup", LocalDate.now(), 8, "Dr. Smith");
@@ -79,6 +104,10 @@ public class LinkedListTests {
         assertEquals(expResult, result);
     }
 
+
+    /**
+     * Test the isEmpty method of LinkedList with an empty list.
+     */
     @Test
     public void testIsEmpty() {
         LinkedList instance = new LinkedList();
@@ -87,6 +116,10 @@ public class LinkedListTests {
         assertEquals(expResult, result);
     }
 
+
+    /**
+     * Test the isEmpty method of LinkedList with a populated list.
+     */
     @Test
     public void testIsEmpty_PopulatedList() {
         LinkedList instance = new LinkedList();
