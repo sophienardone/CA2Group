@@ -14,6 +14,13 @@ public class HashMap {
         this.data = data;
     }
 
+    private int hashFunction(String key){
+        int slot = Math.abs(key.hashCode());
+        slot = slot % data.length;
+        return slot;
+    }
+
+
     private static class Entry{
         private final String key;
         private Patient value;
