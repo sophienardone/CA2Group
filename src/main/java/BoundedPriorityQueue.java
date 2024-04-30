@@ -1,5 +1,7 @@
 public class BoundedPriorityQueue extends LinkedList {
 
+
+
     private final String doctor;
 
 
@@ -10,14 +12,33 @@ public class BoundedPriorityQueue extends LinkedList {
 
     }
 
-    public boolean safeAdd(Appointment appointment){
-        if(size() < maxSize && appointment.getDocFullName().equalsIgnoreCase(doctor)){
-            add(appointment);
-            return true;
-        } else {
+
+    @Override
+    public int size() {
+        return super.size();
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return super.isEmpty();
+    }
+
+
+    @Override
+    public boolean isFull() {
+        return super.isFull();
+    }
+
+
+    public boolean offer(Appointment appointment){
+        if(isFull()){
             return false;
         }
+        super.add(appointment);
+        return true;
     }
+
+
 
     public void failFastAdd(Appointment appointment) {
         if (size() >= maxSize ) {
@@ -28,6 +49,14 @@ public class BoundedPriorityQueue extends LinkedList {
         }
         add(appointment);
     }
+
+
+
+
+
+
+
+
 
 
 
