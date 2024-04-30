@@ -12,7 +12,15 @@ public class HashMap {
 
     public HashMap(LinkedList<Entry>[] data) {
         this.data = data;
+        numElements = 0;
     }
+
+    private int hashFunction(String key){
+        int slot = Math.abs(key.hashCode());
+        slot = slot % data.length;
+        return slot;
+    }
+
 
     private static class Entry{
         private final String key;
