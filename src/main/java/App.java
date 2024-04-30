@@ -37,7 +37,7 @@ public class App {
             String choice = sc.next();
             switch (choice) {
                 case "1":
-
+                addPatient(sc);
                     break;
                 case "2":
 
@@ -75,6 +75,47 @@ public class App {
         System.out.println("5. Call the next patient in for a specified doctor");
         System.out.println("6. Exit");
     }
+
+    private static void addPatient(Scanner sc) {
+        System.out.print("Enter first name: ");
+        String firstName = sc.nextLine();
+
+        System.out.print("Enter last name: ");
+        String lastName = sc.nextLine();
+
+        System.out.print("Enter date of birth: ");
+        LocalDate dateOfBirth = LocalDate.parse(sc.nextLine());
+
+        Patient newPatient = new Patient(firstName, lastName, dateOfBirth, null, null);
+
+        boolean existingPatient = false;
+
+        for (LinkedList<Patient> doctorQueue : doctorsQueue) {
+            for (Patient patient : doctorQueue) {
+                if (patient.getFirstName().equalsIgnoreCase(firstName) &&
+                        patient.getLastName().equalsIgnoreCase(lastName) && patient.getDateOfBirth().equals(dateOfBirth)) {
+                    existingPatient = true;
+                    break;
+                }
+            }
+        }
+
+        if (existingPatient) {
+            System.out.println("Patient with the same details already exists in the practice.");
+        } else {
+            for (LinkedList<Patient> doctorQueue : doctorsQueue) {
+                if (doctorQueue.size() < upperBound) {
+                    doctorQueue.add(newPatient);
+                    System.out.println("Patient added successfully.");
+                    return;
+                }
+            }
+            System.out.println("All doctor queues are full. Patient could not be added.");
+        }
+
+
+    }
+
 
 
 
