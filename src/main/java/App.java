@@ -74,13 +74,13 @@ public class App {
 
     private static void addPatient(Scanner sc) {
         System.out.print("Enter first name: ");
-        String firstName = sc.nextLine();
+        String firstName = sc.next();
 
         System.out.print("Enter last name: ");
-        String lastName = sc.nextLine();
+        String lastName = sc.next();
 
         System.out.print("Enter date of birth: ");
-        LocalDate dateOfBirth = LocalDate.parse(sc.nextLine());
+        LocalDate dateOfBirth = LocalDate.parse(sc.next());
 
         Patient newPatient = new Patient(firstName, lastName, dateOfBirth, null, null);
 
@@ -155,6 +155,4 @@ public class App {
             System.out.println("Patient not found in the practice.");
         }
     }
-
-
 }
