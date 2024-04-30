@@ -1,13 +1,16 @@
-public class BoundedPriorityQueue extends LinkedList {
+import java.util.LinkedList;
+public class BoundedPriorityQueue extends LinkedList<Appointment> {
 
+    private LinkedList<Appointment> queue;
 
-
+    private final int maxSize;
     private final String doctor;
 
 
 
     public BoundedPriorityQueue(int maxSize, String doctor) {
-        super(maxSize);
+        this.queue = new LinkedList<>();
+        this.maxSize = maxSize;
         this.doctor = doctor;
 
     }
@@ -15,18 +18,18 @@ public class BoundedPriorityQueue extends LinkedList {
 
     @Override
     public int size() {
-        return super.size();
+        return queue.size();
     }
 
     @Override
     public boolean isEmpty() {
-        return super.isEmpty();
+        return queue.isEmpty();
     }
 
 
-    @Override
+
     public boolean isFull() {
-        return super.isFull();
+        return queue.size() == maxSize;
     }
 
 
@@ -34,7 +37,7 @@ public class BoundedPriorityQueue extends LinkedList {
         if(isFull()){
             return false;
         }
-        super.add(appointment);
+        queue.add(appointment);
         return true;
     }
 
@@ -47,7 +50,7 @@ public class BoundedPriorityQueue extends LinkedList {
         if(!appointment.getDocFullName().equalsIgnoreCase(doctor)){
             throw new IllegalArgumentException("Appointment doctor does not match queue doctor");
         }
-        add(appointment);
+        queue.add(appointment);
     }
 
 
