@@ -156,14 +156,16 @@ public class App {
             System.out.println("Patient not found in the practice.");
         }
     }
-    private static void diaplayAllPatients(){
+
+    private static void diaplayAllPatients() {
         for (int i = 0; i < doctorsQueue.length; i++) {
             for (int j = 0; j < doctorsQueue[i].size(); j++) {
                 System.out.println(doctorsQueue[i].get(j).toString());
             }
         }
     }
-    private static void createAppointment(){
+
+    private static void createAppointment() {
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Enter first name: ");
@@ -179,7 +181,7 @@ public class App {
         LocalDate appointmentDate = LocalDate.parse(sc.nextLine());
 
         Random rd = new Random();
-        int triage = rd.nextInt(1-6);
+        int triage = rd.nextInt(1 - 6);
 
         System.out.println("What is your issue");
         String issue = sc.nextLine();
@@ -201,5 +203,23 @@ public class App {
             }
         }
         System.out.println("Error: Appointment failed to get added");
+    }
+
+    private static void callNextPatient() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter the index of the doctor (starting from 1): ");
+        int doctorIndex = sc.nextInt() - 1;
+
+        if (doctorIndex < 0 || doctorIndex >= doctorsQueue.length) {
+            System.out.println("Invalid doctor index. Please enter a number between 1 and " + doctorsQueue.length);
+            return;
+        }
+
+            if (doctorsQueue[doctorIndex].isEmpty()){
+                System.out.println("The queue is empty");
+            } else {
+                System.out.println("Calling: " + doctorsQueue[doctorIndex].removeFirst().getFirstName());
+            }
     }
 }
