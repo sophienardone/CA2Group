@@ -154,5 +154,6 @@ public class App {
         if (!patientFound) {
             System.out.println("Patient not found in the practice.");
         }
+        System.out.println("Send help");
     }
 }
