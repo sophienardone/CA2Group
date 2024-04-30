@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.util.Queue;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.LinkedList;
 
@@ -155,11 +156,50 @@ public class App {
             System.out.println("Patient not found in the practice.");
         }
     }
-    private void diaplayAllPatients(){
+    private static void diaplayAllPatients(){
         for (int i = 0; i < doctorsQueue.length; i++) {
             for (int j = 0; j < doctorsQueue[i].size(); j++) {
                 System.out.println(doctorsQueue[i].get(j).toString());
             }
         }
+    }
+    private static void createAppointment(){
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter first name: ");
+        String firstName = sc.next();
+
+        System.out.print("Enter last name: ");
+        String lastName = sc.next();
+
+        System.out.print("Enter date of birth: ");
+        LocalDate dateOfBirth = LocalDate.parse(sc.next());
+
+        System.out.print("Enter date of appointment (yyyy-mm-dd): ");
+        LocalDate appointmentDate = LocalDate.parse(sc.nextLine());
+
+        Random rd = new Random();
+        int triage = rd.nextInt(1-6);
+
+        System.out.println("What is your issue");
+        String issue = sc.nextLine();
+
+        System.out.println("Doctor's full name");
+        String docName = sc.next();
+
+        Patient newPatient = new Patient(firstName, lastName, dateOfBirth, null, null);
+
+        Appointment newAppointment = new Appointment(firstName, lastName, dateOfBirth, issue, appointmentDate, triage, docName);
+
+        newPatient.getAppointments().add(newAppointment);
+
+        for (LinkedList<Patient> doctorQueue : doctorsQueue) {
+            if (doctorQueue.size() < upperBound) {
+                doctorQueue.add(newPatient);
+                System.out.println("Appointment created successfully and patient added to a doctor's queue.");
+                return;
+            }
+        }
+        System.out.println("Error: Appointment failed to get added");
     }
 }
