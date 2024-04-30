@@ -17,7 +17,7 @@ public class Patient {
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
         this.dateJoined = dateJoined;
-        this.appointments = appointments;
+        this.appointments = new LinkedList(appointments);
     }
 
     public String getFirstName() {
