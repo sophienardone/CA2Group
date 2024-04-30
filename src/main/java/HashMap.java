@@ -12,6 +12,7 @@ public class HashMap {
 
     public HashMap(LinkedList<Entry>[] data) {
         this.data = data;
+        numElements = 0;
     }
 
     private int hashFunction(String key){
