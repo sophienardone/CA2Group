@@ -173,6 +173,9 @@ public class App {
         }
     }
 
+    /**
+     * displays all the current patients to the user
+     */
     private static void diaplayAllPatients() {
         for (int i = 0; i < doctorsQueue.length; i++) {
             for (int j = 0; j < doctorsQueue[i].size(); j++) {
@@ -181,6 +184,9 @@ public class App {
         }
     }
 
+    /**
+     * Allows the user to create an appointment for a new patient
+     */
     private static void createAppointment() {
         Scanner sc = new Scanner(System.in);
 
@@ -221,6 +227,9 @@ public class App {
         System.out.println("Error: Appointment failed to get added");
     }
 
+    /**
+     * removes and displays the first entry from the queue
+     */
     private static void callNextPatient() {
         Scanner sc = new Scanner(System.in);
 
