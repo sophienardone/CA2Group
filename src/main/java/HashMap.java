@@ -55,6 +55,26 @@ public class HashMap {
         return null;
     }
 
+    public Patient get(String key){
+        if (key == null){
+            throw new IllegalArgumentException("The key provided is null");
+        }
+        if (numElements == 0){
+            return null;
+        }
+
+        int slot = hashFunction(key);
+        if (data[slot] == null){
+            return null;
+        }
+        for (Entry e:data[slot]){
+            if (e.key.equals(key)){
+                return e.value;
+            }
+        }
+        return null;
+    }
+
     private static class Entry{
         protected final String key;
         protected Patient value;
