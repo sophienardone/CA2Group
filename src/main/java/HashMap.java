@@ -23,8 +23,8 @@ public class HashMap {
 
 
     private static class Entry{
-        private final String key;
-        private Patient value;
+        protected final String key;
+        protected Patient value;
 
         public Entry(String key, Patient value){
             this.key = key;
