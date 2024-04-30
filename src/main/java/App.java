@@ -14,14 +14,16 @@ public class App {
 
         Scanner sc = new Scanner(System.in);
 
-
+        // Getting user input for the upper bound of the queue
         System.out.println("Enter the upper bound for the queue");
         int upperBound = sc.nextInt();
         sc.nextLine();
 
+        //// Prompting the user to enter the number of doctors rostered for the day
         System.out.println("Enter number of doctors rostered for the day:");
         int rosteredAmount = sc.nextInt();
 
+        //initializing doctorsQueue array
         doctorsQueue = new LinkedList[rosteredAmount];
         for (int i = 0; i < rosteredAmount; i++) {
             doctorsQueue[i] = new LinkedList<Patient>();
@@ -62,6 +64,9 @@ public class App {
 
     }
 
+    /**
+     * Displays menu options to the user.
+     */
     public static void menuOptions() {
         System.out.println("Choose an option:");
         System.out.println("1. Add a new patient");
@@ -71,6 +76,12 @@ public class App {
         System.out.println("5. Call the next patient in for a specified doctor");
         System.out.println("6. Exit");
     }
+
+    /**
+     * Adds a new patient to the system.
+     *
+     * @param sc Scanner object for user input
+     */
 
     private static void addPatient(Scanner sc) {
         System.out.print("Enter first name: ");
@@ -100,7 +111,7 @@ public class App {
             System.out.println("Patient with the same details already exists in the practice.");
         } else {
             for (LinkedList<Patient> doctorQueue : doctorsQueue) {
-                if (doctorQueue.size() < upperBound) {
+                if (doctorQueue.size() < upperBound) { // Checking if the doctor's queue has space to add the patient
                     doctorQueue.add(newPatient);
                     System.out.println("Patient added successfully.");
                     return;
@@ -111,6 +122,11 @@ public class App {
 
 
     }
+
+    /**
+     * Deletes a patient from the system.
+     * @param sc Scanner object for user input
+     */
 
 
     private static void deletePatient(Scanner sc) {
@@ -125,9 +141,9 @@ public class App {
 
         boolean patientFound = false;
 
-
+        // Looping through the doctorsQueue array
         for (LinkedList<Patient> doctorQueue : doctorsQueue) {
-
+        //Looping through each LinkedList in the doctorsQueue
             for (Patient patient : doctorQueue) {
                 if (patient.getFirstName().equalsIgnoreCase(firstName) &&
                         patient.getLastName().equalsIgnoreCase(lastName) &&
