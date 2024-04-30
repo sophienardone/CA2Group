@@ -21,6 +21,9 @@ public class HashMap {
         return slot;
     }
 
+    public int size(){
+        return numElements;
+    }
 
     private static class Entry{
         protected final String key;
