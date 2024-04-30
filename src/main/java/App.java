@@ -37,10 +37,10 @@ public class App {
             String choice = sc.next();
             switch (choice) {
                 case "1":
-                addPatient(sc);
+                    addPatient(sc);
                     break;
                 case "2":
-
+                    deletePatient(sc);
                     break;
                 case "3":
 
@@ -58,10 +58,6 @@ public class App {
                     System.out.println("Invalid option. Please choose a valid option.");
             }
         } while (true);
-
-
-
-
 
 
     }
@@ -117,7 +113,48 @@ public class App {
     }
 
 
+    private static void deletePatient(Scanner sc) {
+        System.out.print("Enter first name of the patient to delete: ");
+        String firstName = sc.nextLine();
 
+        System.out.print("Enter last name of the patient to delete: ");
+        String lastName = sc.nextLine();
+
+        System.out.print("Enter date of birth of the patient to delete (yyyy-mm-dd): ");
+        LocalDate dateOfBirth = LocalDate.parse(sc.nextLine());
+
+        boolean patientFound = false;
+
+
+        for (LinkedList<Patient> doctorQueue : doctorsQueue) {
+
+            for (Patient patient : doctorQueue) {
+                if (patient.getFirstName().equalsIgnoreCase(firstName) &&
+                        patient.getLastName().equalsIgnoreCase(lastName) &&
+                        patient.getDateOfBirth().equals(dateOfBirth)) {
+                    doctorQueue.remove(patient);
+                    patientFound = true;
+
+                    for (Appointment appointment : patient.getAppointments()) {
+                        if (appointment.getDate().isAfter(LocalDate.now())) {
+                            System.out.println("Canceled appointment for " + appointment.getFirstName() +
+                                    appointment.getLastName() + " scheduled on " + appointment.getDate());
+                            patient.getAppointments().remove(appointment);
+                        } else {
+                            System.out.println("Cannot cancel appointment for " + appointment.getFirstName() +
+                                    appointment.getLastName() + " scheduled on " + appointment.getDate() + ". It is already past.");
+                        }
+                    }
+                    System.out.println("Patient removed successfully.");
+                    return;
+                }
+            }
+        }
+
+        if (!patientFound) {
+            System.out.println("Patient not found in the practice.");
+        }
+    }
 
 
 }
