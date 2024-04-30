@@ -44,13 +44,13 @@ public class App {
                     deletePatient(sc);
                     break;
                 case "3":
-
+                    diaplayAllPatients();
                     break;
                 case "4":
-
+                    createAppointment();
                     break;
                 case "5":
-
+                    callNextPatient();
                     break;
                 case "6":
                     System.out.println("Exiting program...");

@@ -16,16 +16,29 @@ public class HashMap {
         numElements = 0;
     }
 
+    /**
+     * Hash function that takes a key and returns an index in the data array.
+     * @param key String to be hashed in order to get an apportpit index
+     * @return the abosulte value of the key modded by the length
+     */
     private int hashFunction(String key){
         int slot = Math.abs(key.hashCode());
         slot = slot % data.length;
         return slot;
     }
-
+    /**
+     * Returns the number of elements in the HashMap.
+     */
     public int size(){
         return numElements;
     }
 
+    /**
+     * Adds a key and value into the map
+     * @param key the key (String) to be added
+     * @param value the value (patient)
+     * @return If a collision occurs it returns what value had the same hashed key
+     */
     public Patient put(String key, Patient value){
         int slot = hashFunction(key);
         //There is no linkedlist in that spot
@@ -55,6 +68,12 @@ public class HashMap {
         return null;
     }
 
+    /**
+     * Gets the value assigned to a key
+     * @param key the key's value to be checked
+     * @return a Patient object or null if one can't be found
+     * @throws IllegalArgumentException If key provided is null
+     */
     public Patient get(String key){
         if (key == null){
             throw new IllegalArgumentException("The key provided is null");
@@ -74,6 +93,13 @@ public class HashMap {
         }
         return null;
     }
+
+    /**
+     * Removes a value attached to the key given
+     * @param key the key of the value to be removed
+     * @return The removed Patient or null if nothing was removed
+     * @throws IllegalArgumentException If key provided is null
+     */
     public Patient remove(String key) {
         if (key == null) {
             throw new IllegalArgumentException("The key provided is null");
@@ -96,6 +122,38 @@ public class HashMap {
             }
         }
         return null;
+    }
+
+    /**
+     * gets all the keys in one list
+     * @return a linkedlist of all the keys
+     */
+    public LinkedList<String> getKeys() {
+        LinkedList<String> keys = new LinkedList<>();
+        for (int i = 0; i < data.length; i++) {
+            if (data[i] != null) {
+                for (int j = 0; j < data[i].size(); j++) {
+                    keys.add(data[i].get(j).key);
+                }
+            }
+        }
+        return keys;
+    }
+
+    /**
+     * gets a list of all the values
+     * @return a linkedlist of all the values
+     */
+    public LinkedList<Patient> getValues() {
+        LinkedList<Patient> values = new LinkedList<>();
+        for (int i = 0; i < data.length; i++) {
+            if (data[i] != null) {
+                for (int j = 0; j < data[i].size(); j++) {
+                    values.add(data[i].get(j).value);
+                }
+            }
+        }
+        return values;
     }
 
     private static class Entry{
